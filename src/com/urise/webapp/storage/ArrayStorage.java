@@ -51,7 +51,6 @@ public class ArrayStorage extends AbstractArrayStorage {
         return Arrays.copyOfRange(storage, 0, size);
     }
 
-    //если такое резюме есть в хранилище, возвраащет индекс, если нет, то -1
     protected int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].getUuid().equals(uuid)) {
