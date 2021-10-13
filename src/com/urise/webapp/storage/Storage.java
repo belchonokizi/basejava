@@ -2,6 +2,7 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
+//TODO refactoring
 public interface Storage {
     /**
      * Array based storage for Resumes
@@ -20,6 +21,9 @@ public interface Storage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll();
+
+    //return list, sorted by name
+    //List<Resume> getAllSorted; вместо getAll
 
     int size();
 }
