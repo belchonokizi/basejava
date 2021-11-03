@@ -2,6 +2,8 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
+import java.util.List;
+
 //TODO refactoring
 public interface Storage {
     /**
@@ -17,13 +19,8 @@ public interface Storage {
 
     void delete(String uuid);
 
-    /**
-     * @return array, contains only Resumes in storage (without null)
-     */
-    Resume[] getAll();
-
     //return list, sorted by name
-    //List<Resume> getAllSorted; вместо getAll
+    List<Resume> getAllSorted();
 
     int size();
 }
