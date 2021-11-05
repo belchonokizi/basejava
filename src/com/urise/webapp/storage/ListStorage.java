@@ -3,34 +3,33 @@ package com.urise.webapp.storage;
 import com.urise.webapp.model.Resume;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
-public class ListStorage extends AbstractStorage {
+public class ListStorage extends AbstractStorage<Integer> {
     private List<Resume> list = new ArrayList<>();
 
     @Override
-    protected void doUpdate(Resume resume, Object searchKey) {
-        list.set((Integer) searchKey, resume);
+    protected void doUpdate(Resume resume, Integer searchKey) {
+        list.set(searchKey, resume);
     }
 
     @Override
-    protected void doDelete(Object searchKey) {
-        list.remove(((Integer) searchKey).intValue());
+    protected void doDelete(Integer searchKey) {
+        list.remove(searchKey.intValue());
     }
 
     @Override
-    protected boolean isExist(Object searchKey) {
+    protected boolean isExist(Integer searchKey) {
         return searchKey != null;
     }
 
     @Override
-    protected Resume doGet(Object searchKey) {
-        return list.get((Integer) searchKey);
+    protected Resume doGet(Integer searchKey) {
+        return list.get(searchKey);
     }
 
     @Override
-    protected void doSave(Resume resume, Object searchKey) {
+    protected void doSave(Resume resume, Integer searchKey) {
         list.add(resume);
     }
 
