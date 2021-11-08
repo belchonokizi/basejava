@@ -5,12 +5,13 @@ import java.util.*;
 /**
  * Initial resume class
  */
-public class Resume implements Comparable<Resume>{
+public class Resume implements Comparable<Resume> {
     // Unique identifier
     private final String uuid;
     private final String fullName;
     //специальная мапа для ключей-енумов
     private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
+
     private Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
 
 
@@ -22,8 +23,8 @@ public class Resume implements Comparable<Resume>{
 
     public Resume(String uuid, String fullName) {
         //проверяем имя и айди на нулы
-        Objects.requireNonNull(uuid,"uuid must not be null");
-        Objects.requireNonNull(fullName,"fullName must not be null");
+        Objects.requireNonNull(uuid, "uuid must not be null");
+        Objects.requireNonNull(fullName, "fullName must not be null");
         this.uuid = uuid;
         this.fullName = fullName;
     }
@@ -36,8 +37,20 @@ public class Resume implements Comparable<Resume>{
         return contacts.get(type);
     }
 
+    public void addContact(ContactType type, String value) {
+        contacts.put(type, value);
+    }
+
+    public void addSection(SectionType type, Section section) {
+        sections.put(type, section);
+    }
+
     public Section getSection(SectionType type) {
         return sections.get(type);
+    }
+
+    public void setSections(Map<SectionType, Section> sections) {
+        this.sections = sections;
     }
 
     public String getFullName() {
@@ -70,6 +83,6 @@ public class Resume implements Comparable<Resume>{
     @Override
     public int compareTo(Resume o) {
         int cmp = fullName.compareTo(o.fullName);
-        return cmp != 0? cmp : uuid.compareTo(o.uuid);
+        return cmp != 0 ? cmp : uuid.compareTo(o.uuid);
     }
 }
